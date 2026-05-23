@@ -1,0 +1,314 @@
+========================
+EASY LEVEL
+========================
+
+Q1: Arithmetic Operator
+Problem:
+Create TOTAL = salary + bonus
+
+Input Dataset:
+data emp;
+input name $ salary bonus;
+datalines;
+A 1000 100
+B 2000 200
+C 3000 300
+;
+run;
+
+Expected Output:
+name | salary | bonus | total
+A    | 1000   | 100   | 1100
+B    | 2000   | 200   | 2200
+C    | 3000   | 300   | 3300
+
+
+------------------------
+
+Q2: Subtraction Operator
+Problem:
+Create DIFF = salary - bonus
+
+Input Dataset:
+data emp;
+input name $ salary bonus;
+datalines;
+A 1000 100
+B 2000 200
+;
+run;
+
+
+------------------------
+
+Q3: Multiplication Operator
+Problem:
+Create ANNUAL = salary * 12
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+;
+run;
+
+
+------------------------
+
+Q4: Division Operator
+Problem:
+Create AVG = total / 2
+
+Input Dataset:
+data emp;
+input name $ total;
+datalines;
+A 2000
+B 4000
+;
+run;
+
+
+------------------------
+
+Q5: Comparison Operator
+Problem:
+Create FLAG = HIGH if salary > 2000 else LOW
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2500
+C 2000
+;
+run;
+
+
+========================
+MEDIUM LEVEL
+========================
+
+Q6: Logical AND Operator
+Problem:
+Create FLAG = YES if salary > 1000 AND bonus > 100
+
+Input Dataset:
+data emp;
+input name $ salary bonus;
+datalines;
+A 1000 50
+B 2000 200
+C 1500 80
+;
+run;
+
+
+------------------------
+
+Q7: Logical OR Operator
+Problem:
+Create FLAG = YES if salary > 2000 OR bonus > 150
+
+Input Dataset:
+data emp;
+input name $ salary bonus;
+datalines;
+A 1000 200
+B 3000 100
+C 1500 100
+;
+run;
+
+
+------------------------
+
+Q8: NOT Operator
+Problem:
+Create FLAG = YES if salary NOT > 2000
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 3000
+;
+run;
+
+
+------------------------
+
+Q9: IN Operator
+Problem:
+Create FLAG = SELECTED if dept IN ('HR','IT')
+
+Input Dataset:
+data emp;
+input name $ dept $;
+datalines;
+A HR
+B IT
+C FIN
+;
+run;
+
+
+------------------------
+
+Q10: BETWEEN Logic
+Problem:
+Create FLAG = MID if salary between 1000 and 3000
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 500
+B 2000
+C 3500
+;
+run;
+
+
+========================
+ADVANCED LEVEL
+========================
+
+Q11: Missing Value Check
+Problem:
+Create FLAG = MISSING if salary is missing
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B .
+C 2000
+;
+run;
+
+
+------------------------
+
+Q12: Multiple Conditions
+Problem:
+Create FLAG:
+HIGH if salary > 2000 AND bonus > 100
+MEDIUM if salary > 1000
+LOW otherwise
+
+Input Dataset:
+data emp;
+input name $ salary bonus;
+datalines;
+A 1000 50
+B 2500 200
+C 1500 50
+;
+run;
+
+
+------------------------
+
+Q13: String Comparison
+Problem:
+Create FLAG = YES if name = 'A'
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+;
+run;
+
+
+------------------------
+
+Q14: Combined Operators
+Problem:
+Create FLAG = YES if (salary > 1000 AND dept = 'IT') OR bonus > 200
+
+Input Dataset:
+data emp;
+input name $ dept $ salary bonus;
+datalines;
+A IT 1500 100
+B HR 2000 300
+C IT 900 50
+;
+run;
+
+
+------------------------
+
+Q15: Modulus Operator
+Problem:
+Create FLAG = EVEN if MOD(salary,2)=0 else ODD
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+1000
+1001
+1002
+;
+run;
+
+
+========================
+BONUS
+========================
+
+Q16: Division with Missing Handling
+Problem:
+Create RATIO = salary / bonus
+
+Input Dataset:
+data emp;
+input salary bonus;
+datalines;
+1000 100
+2000 0
+3000 .
+;
+run;
+
+
+------------------------
+
+Q17: Absolute Difference
+Problem:
+Create DIFF = ABS(salary - bonus)
+
+Input Dataset:
+data emp;
+input salary bonus;
+datalines;
+1000 1500
+2000 1000
+;
+run;
+
+
+------------------------
+
+Q18: Power Operator
+Problem:
+Create SQUARE = salary ** 2
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+10
+20
+;
+run;

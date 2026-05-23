@@ -1,0 +1,92 @@
+========================================
+SAS SQL PRACTICE (NO RETURNS)
+========================================
+
+PROBLEM STATEMENT:
+Find customers who made purchases but never returned any products.
+
+----------------------------------------
+INPUT DATASET 1 (CUSTOMERS)
+----------------------------------------
+
+data customers;
+input customer_id name $;
+datalines;
+101 Amit
+102 Ravi
+103 Neha
+104 John
+105 Sara
+;
+run;
+
+----------------------------------------
+INPUT DATASET 2 (ORDERS)
+----------------------------------------
+
+data orders;
+input order_id customer_id;
+datalines;
+1 101
+2 102
+3 103
+4 101
+5 104
+;
+run;
+
+----------------------------------------
+INPUT DATASET 3 (RETURNS)
+----------------------------------------
+
+data returns;
+input return_id customer_id;
+datalines;
+1 102
+2 104
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+CUSTOMERS
+
+customer_id | name
+-----------------------
+101         | Amit
+102         | Ravi
+103         | Neha
+104         | John
+105         | Sara
+
+ORDERS
+
+order_id | customer_id
+------------------------
+1        | 101
+2        | 102
+3        | 103
+4        | 101
+5        | 104
+
+RETURNS
+
+return_id | customer_id
+--------------------------
+1         | 102
+2         | 104
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+customer_id
+---------------
+101
+103
+
+========================================
+END
+========================================

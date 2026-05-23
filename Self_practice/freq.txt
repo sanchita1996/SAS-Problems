@@ -1,0 +1,205 @@
+PROC FREQ Logical Practice Problems (Base → Advanced with Dataset)
+
+---
+
+### 1. Basic Frequency Count
+
+Dataset:
+
+data emp;
+input EMP_ID DEPT $;
+datalines;
+1 HR
+2 IT
+3 HR
+4 FIN
+5 IT
+;
+run;
+
+Task:
+Find frequency and percentage of each DEPT.
+
+---
+
+### 2. Missing Value Analysis
+
+Dataset:
+
+data age_data;
+input ID AGE;
+datalines;
+1 25
+2 .
+3 30
+4 40
+5 .
+;
+run;
+
+Task:
+Find missing vs non-missing AGE frequency.
+
+---
+
+### 3. Duplicate Check
+
+Dataset:
+
+data emp;
+input EMP_ID;
+datalines;
+101
+102
+101
+103
+104
+102
+;
+run;
+
+Task:
+Identify duplicate EMP_IDs and frequency of each ID.
+
+---
+
+### 4. Gender Distribution
+
+Dataset:
+
+data emp;
+input ID GENDER $;
+datalines;
+1 M
+2 F
+3 M
+4 F
+5 F
+;
+run;
+
+Task:
+Find frequency and percentage of GENDER.
+
+---
+
+### 5. Cross Tab Analysis
+
+Dataset:
+
+data emp;
+input ID DEPT $ GENDER $;
+datalines;
+1 HR M
+2 IT F
+3 HR F
+4 FIN M
+5 IT F
+;
+run;
+
+Task:
+Create DEPT × GENDER cross-tab with row/column percentages.
+
+---
+
+### 6. Customer Repeat Analysis
+
+Dataset:
+
+data trans;
+input CUST_ID AMOUNT;
+datalines;
+101 500
+101 700
+102 300
+103 400
+103 600
+104 900
+;
+run;
+
+Task:
+Identify customers with multiple transactions and create YES/NO flag.
+
+---
+
+### 7. Age Group Distribution
+
+Dataset:
+
+data age_data;
+input ID AGE;
+datalines;
+1 18
+2 25
+3 35
+4 45
+5 65
+6 15
+;
+run;
+
+Task:
+Create age groups (<20, 20–40, 40–60, >60) and find frequency.
+
+---
+
+### 8. Product Category Analysis
+
+Dataset:
+
+data sales;
+input COUNTRY $ CATEGORY $;
+datalines;
+IN A
+IN B
+US A
+US C
+UK B
+UK B
+;
+run;
+
+Task:
+Create cross-tab COUNTRY × CATEGORY.
+
+---
+
+### 9. Transaction Status Analysis
+
+Dataset:
+
+data trans;
+input ID STATUS $;
+datalines;
+1 SUCCESS
+2 FAIL
+3 SUCCESS
+4 PENDING
+5 FAIL
+;
+run;
+
+Task:
+Find frequency and percentage of STATUS.
+
+---
+
+### 10. Purchase Behavior Analysis
+
+Dataset:
+
+data cust;
+input ID GENDER $ PURCHASE $;
+datalines;
+1 M Y
+2 F N
+3 M Y
+4 F Y
+5 F N
+;
+run;
+
+Task:
+Create cross-tab GENDER × PURCHASE and analyze behavior.

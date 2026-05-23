@@ -1,0 +1,50 @@
+Problem Statement:
+You are given a dataset containing FULL_NAME values with:
+
+* Multiple extra spaces between words
+* Leading and trailing spaces
+
+Task:
+Create two new variables:
+
+1. CLEAN_NAME → keep only a single space between words (remove extra spaces)
+2. NOSPACE_NAME → remove all spaces completely
+
+---
+
+Create Dataset:
+
+data names;
+input FULL_NAME $50.;
+datalines;
+Amit     Sharma
+Neha      Verma
+Raj   Singh
+John        Doe
+Ankit  Kumar   Singh
+;
+run;
+
+---
+
+Input Table: NAMES
+
+## FULL_NAME
+
+Amit     Sharma
+Neha      Verma
+Raj   Singh
+John        Doe
+Ankit  Kumar   Singh
+
+---
+
+Expected Output:
+
+## FULL_NAME               | CLEAN_NAME           | NOSPACE_NAME
+
+Amit     Sharma       | Amit Sharma          | AmitSharma
+Neha      Verma         | Neha Verma           | NehaVerma
+Raj   Singh           | Raj Singh            | RajSingh
+John        Doe         | John Doe             | JohnDoe
+Ankit  Kumar   Singh    | Ankit Kumar Singh    | AnkitKumarSingh

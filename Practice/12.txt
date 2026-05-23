@@ -1,0 +1,56 @@
+========================================
+SAS SQL PRACTICE (TOTAL REVENUE & ORDER COUNT PER REGION)
+========================================
+
+PROBLEM STATEMENT:
+Get the total revenue and the number of orders per region.
+
+----------------------------------------
+INPUT DATASET (ORDERS)
+----------------------------------------
+
+data orders;
+input order_id region $ total_amount;
+datalines;
+1 North 500
+2 South 300
+3 East 400
+4 North 200
+5 West 600
+6 South 700
+7 East 100
+8 West 300
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+ORDERS
+
+order_id | region | total_amount
+--------------------------------
+1        | North  | 500
+2        | South  | 300
+3        | East   | 400
+4        | North  | 200
+5        | West   | 600
+6        | South  | 700
+7        | East   | 100
+8        | West   | 300
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+region | total_revenue | order_count
+-------------------------------------
+North  | 700           | 2
+South  | 1000          | 2
+East   | 500           | 2
+West   | 900           | 2
+
+========================================
+END
+========================================

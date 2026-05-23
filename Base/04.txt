@@ -1,0 +1,64 @@
+Problem Statement:
+You are given two datasets: ORDERS and CUSTOMERS.
+
+ORDERS contains order details, and CUSTOMERS contains customer names.
+Some orders may not have matching customer records.
+
+Task:
+Create a dataset that shows all orders along with customer names.
+If customer name is missing, show it as "Unknown".
+
+---
+
+Create Dataset:
+
+data orders;
+input ORDER_ID CUSTOMER_ID AMOUNT;
+datalines;
+101 1 500
+102 2 700
+103 3 400
+104 5 900
+;
+run;
+
+data customers;
+input CUSTOMER_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+;
+run;
+
+---
+
+Input Table: ORDERS
+
+## ORDER_ID | CUSTOMER_ID | AMOUNT
+
+101      | 1           | 500
+102      | 2           | 700
+103      | 3           | 400
+104      | 5           | 900
+
+---
+
+Input Table: CUSTOMERS
+
+## CUSTOMER_ID | NAME
+
+1           | Amit
+2           | Neha
+3           | Raj
+
+---
+
+Expected Output:
+
+## ORDER_ID | CUSTOMER_ID | AMOUNT | NAME
+
+101      | 1           | 500    | Amit
+102      | 2           | 700    | Neha
+103      | 3           | 400    | Raj
+104      | 5           | 900    | Unknown

@@ -1,0 +1,63 @@
+========================================
+SAS SQL PRACTICE (CHURNED CUSTOMERS - NO ORDERS IN LAST 6 MONTHS)
+========================================
+
+PROBLEM STATEMENT:
+Find customers who have not placed any orders in the last 6 months.
+
+----------------------------------------
+INPUT DATASET (ORDERS)
+----------------------------------------
+
+data orders;
+input order_id customer_id order_date :date9.;
+format order_date date9.;
+datalines;
+1 101 01JAN2024
+2 102 15FEB2024
+3 103 20MAR2024
+4 104 10APR2024
+5 101 05MAY2024
+6 102 12JUN2024
+7 103 18JUL2024
+8 104 25AUG2024
+9 101 30SEP2024
+10 102 05OCT2024
+11 103 12NOV2024
+12 104 20DEC2024
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+ORDERS
+
+order_id | customer_id | order_date
+-----------------------------------
+1        | 101         | 01JAN2024
+2        | 102         | 15FEB2024
+3        | 103         | 20MAR2024
+4        | 104         | 10APR2024
+5        | 101         | 05MAY2024
+6        | 102         | 12JUN2024
+7        | 103         | 18JUL2024
+8        | 104         | 25AUG2024
+9        | 101         | 30SEP2024
+10       | 102         | 05OCT2024
+11       | 103         | 12NOV2024
+12       | 104         | 20DEC2024
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+customer_id
+------------
+101
+102
+
+========================================
+END
+========================================

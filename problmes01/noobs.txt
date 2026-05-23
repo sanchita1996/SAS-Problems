@@ -1,0 +1,119 @@
+========================
+WHAT IS NOBS=
+========================
+
+NOBS= is a DATA step option used with SET statement.
+
+It creates a variable that stores:
+-> Total number of observations in the dataset
+
+NOTE:
+- It does NOT read all rows to count
+- Value is available at compile time
+
+
+========================
+SYNTAX
+========================
+
+data new;
+set dataset nobs=total_obs;
+run;
+
+
+========================
+EXAMPLE
+========================
+
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+;
+run;
+
+data test;
+set emp nobs=n;
+put n=;
+run;
+
+LOG OUTPUT:
+n=3
+n=3
+n=3
+
+
+========================
+IMPORTANT BEHAVIOR
+========================
+
+- NOBS value is SAME for all rows
+- It gives total count of dataset
+- Does not depend on WHERE or IF condition
+
+
+========================
+USE CASES
+========================
+
+1. Get total number of observations
+2. Reverse row numbering
+3. Conditional logic based on dataset size
+4. Loop control
+
+
+========================
+EXAMPLE: REVERSE ROW NUMBER
+========================
+
+data test;
+set emp nobs=n;
+rev_row = n - _n_ + 1;
+run;
+
+Output:
+name | rev_row
+A    | 3
+B    | 2
+C    | 1
+
+
+========================
+IMPORTANT DIFFERENCE
+========================
+
+_N_:
+- Current row number
+
+NOBS:
+- Total number of rows
+
+
+========================
+INTERVIEW POINT
+========================
+
+- NOBS is compile-time metadata
+- Does not change during execution
+- Works even without reading all rows
+
+
+========================
+COMMON MISTAKE
+========================
+
+Wrong:
+if _n_ = nobs;
+
+Correct:
+Use variable defined in NOBS= option
+
+
+========================
+FINAL TAKEAWAY
+========================
+
+_N_   -> current row counter
+NOBS  -> total rows in dataset

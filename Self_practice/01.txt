@@ -1,0 +1,48 @@
+Problem Statement:
+You are given a dataset containing employee salary and experience.
+
+Task:
+Create a new variable BONUS_CATEGORY based on the following conditions:
+
+* If SALARY >= 80000 and EXPERIENCE >= 5 → "High Bonus"
+* If SALARY >= 50000 and EXPERIENCE >= 3 → "Medium Bonus"
+* Otherwise → "Low Bonus"
+
+---
+
+Create Dataset:
+
+data emp;
+input EMP_ID NAME $ SALARY EXPERIENCE;
+datalines;
+1 Amit 90000 6
+2 Neha 60000 4
+3 Raj 45000 2
+4 John 80000 3
+5 Kiran 50000 3
+;
+run;
+
+---
+
+Input Table: EMP
+
+## EMP_ID | NAME  | SALARY | EXPERIENCE
+
+1      | Amit  | 90000  | 6
+2      | Neha  | 60000  | 4
+3      | Raj   | 45000  | 2
+4      | John  | 80000  | 3
+5      | Kiran | 50000  | 3
+
+---
+
+Expected Output:
+
+## EMP_ID | NAME  | SALARY | EXPERIENCE | BONUS_CATEGORY
+
+1      | Amit  | 90000  | 6          | High Bonus
+2      | Neha  | 60000  | 4          | Medium Bonus
+3      | Raj   | 45000  | 2          | Low Bonus
+4      | John  | 80000  | 3          | Medium Bonus
+5      | Kiran | 50000  | 3          | Medium Bonus

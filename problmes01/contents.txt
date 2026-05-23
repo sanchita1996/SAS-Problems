@@ -1,0 +1,247 @@
+========================
+EASY LEVEL
+========================
+
+Q1: View Dataset Structure
+Problem:
+Display metadata of dataset
+
+Input Dataset:
+data emp;
+input name $ age salary;
+datalines;
+A 25 1000
+B 30 2000
+C 28 3000
+;
+run;
+
+
+------------------------
+
+Q2: Show Only Variable Names
+Problem:
+Display only variable names from dataset
+
+Input Dataset:
+data emp;
+input id name $ dept $ salary;
+datalines;
+1 A HR 1000
+2 B IT 2000
+;
+run;
+
+
+------------------------
+
+Q3: Display Dataset Information Briefly
+Problem:
+Display compact metadata output
+
+Input Dataset:
+data emp;
+input name $ age salary;
+datalines;
+A 25 1000
+B 30 2000
+;
+run;
+
+
+========================
+MEDIUM LEVEL
+========================
+
+Q4: Output Metadata to Dataset
+Problem:
+Store variable metadata into a new dataset META_OUT
+
+Input Dataset:
+data emp;
+input name $ age salary;
+datalines;
+A 25 1000
+B 30 2000
+;
+run;
+
+
+------------------------
+
+Q5: List Variables in Order of Creation
+Problem:
+Display variables in creation order
+
+Input Dataset:
+data emp;
+input salary name $ age;
+datalines;
+1000 A 25
+2000 B 30
+;
+run;
+
+
+------------------------
+
+Q6: Display Only Numeric Variables Info
+Problem:
+Show metadata only for numeric variables
+
+Input Dataset:
+data emp;
+input id name $ salary age;
+datalines;
+1 A 1000 25
+2 B 2000 30
+;
+run;
+
+
+------------------------
+
+Q7: Get Number of Observations and Variables
+Problem:
+Find total observations and number of variables
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+;
+run;
+
+
+========================
+ADVANCED LEVEL
+========================
+
+Q8: Compare Two Dataset Structures
+Problem:
+Display metadata of two datasets and identify differences
+
+Input Dataset:
+data emp1;
+input id name $ salary;
+datalines;
+1 A 1000
+2 B 2000
+;
+run;
+
+data emp2;
+input id name $ salary dept $;
+datalines;
+1 A 1000 HR
+2 B 2000 IT
+;
+run;
+
+
+------------------------
+
+Q9: Extract Variable Type and Length
+Problem:
+Create dataset containing variable name, type, and length
+
+Input Dataset:
+data emp;
+input name $ age salary;
+datalines;
+A 25 1000
+B 30 2000
+;
+run;
+
+
+------------------------
+
+Q10: Identify Character Variables Only
+Problem:
+List only character variables from dataset
+
+Input Dataset:
+data emp;
+input id name $ dept $ salary;
+datalines;
+1 A HR 1000
+2 B IT 2000
+;
+run;
+
+
+------------------------
+
+Q11: Check Dataset Creation Date
+Problem:
+Find dataset creation date and last modified date
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+;
+run;
+
+
+------------------------
+
+Q12: Metadata for All Datasets in Library
+Problem:
+Display metadata for all datasets in WORK library
+
+
+========================
+BONUS
+========================
+
+Q13: Count Character vs Numeric Variables
+Problem:
+Count number of character and numeric variables separately
+
+Input Dataset:
+data emp;
+input id name $ dept $ salary age;
+datalines;
+1 A HR 1000 25
+2 B IT 2000 30
+;
+run;
+
+
+------------------------
+
+Q14: Find Longest Variable Length
+Problem:
+Identify variable with maximum length
+
+Input Dataset:
+data emp;
+input name $20. dept $10. salary;
+datalines;
+A HR 1000
+B IT 2000
+;
+run;
+
+
+------------------------
+
+Q15: Export Metadata to Dataset and Print
+Problem:
+Store metadata in dataset META and print it
+
+Input Dataset:
+data emp;
+input id name $ salary;
+datalines;
+1 A 1000
+2 B 2000
+;
+run;

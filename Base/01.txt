@@ -1,0 +1,30 @@
+🔹 Problem Statement
+
+You are given a dataset containing employee IDs in the format:
+
+AAA-1234-ZZ
+
+Where:
+
+AAA → Department Code
+1234 → Employee Number
+ZZ → Location Code
+
+👉 Task:
+Create new variables:
+
+DEPT_CODE
+EMP_NUM (numeric)
+LOC_CODE
+
+🔹 Create Dataset
+
+data emp_data;
+    input EMP_ID $20.;
+    datalines;
+HRD-1001-IN
+FIN-2034-US
+ITD-5678-UK
+MKT-9090-AU
+;
+run;

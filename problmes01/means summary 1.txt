@@ -1,0 +1,155 @@
+🔷 PROC MEANS + SUMMARY PRACTICE SET
+
+========================
+COMMON INPUT DATASET
+========================
+
+data emp;
+input dept $ gender $ salary bonus;
+datalines;
+HR M 1000 100
+HR F 2000 200
+IT M 3000 300
+IT F 4000 400
+IT M 2500 150
+;
+run;
+
+
+========================
+EASY LEVEL
+========================
+
+Q1: PROC MEANS Basic
+Problem:
+Generate mean salary
+
+------------------------
+
+Q2: PROC SUMMARY Basic
+Problem:
+Generate mean salary and store in dataset OUT1
+
+------------------------
+
+Q3: PROC MEANS Multiple Variables
+Problem:
+Generate mean for salary and bonus
+
+------------------------
+
+Q4: PROC SUMMARY with N and NMISS
+Problem:
+Calculate number of observations and missing values for salary
+
+
+========================
+MEDIUM LEVEL
+========================
+
+Q5: Group-wise Mean using PROC MEANS
+Problem:
+Calculate mean salary by department
+
+------------------------
+
+Q6: Group-wise Mean using PROC SUMMARY
+Problem:
+Calculate mean salary by department and store in dataset OUT2
+
+------------------------
+
+Q7: Multiple Class Variables
+Problem:
+Calculate mean salary by dept and gender
+
+------------------------
+
+Q8: Use NWAY Option
+Problem:
+Generate summary only for full combination of dept and gender
+
+
+========================
+ADVANCED LEVEL
+========================
+
+Q9: Custom Output Variable Names
+Problem:
+Create dataset OUT3 with mean salary as AVG_SAL and sum bonus as TOTAL_BONUS
+
+------------------------
+
+Q10: Filter Data
+Problem:
+Calculate mean salary only for salary > 2000
+
+------------------------
+
+Q11: PROC MEANS vs SUMMARY Behavior
+Problem:
+Run both procedures on same dataset and observe output difference
+
+------------------------
+
+Q12: Suppress Output
+Problem:
+Use PROC MEANS such that no printed output appears and only dataset is created
+
+
+========================
+DIFFERENCE BASED QUESTIONS
+========================
+
+Q13: Same Task Using Both Procedures
+Problem:
+Calculate mean salary by dept using:
+1. PROC MEANS
+2. PROC SUMMARY
+Store results in separate datasets
+
+------------------------
+
+Q14: Identify Output Difference
+Problem:
+Run PROC MEANS and PROC SUMMARY without options and compare results
+
+------------------------
+
+Q15: NWAY Impact
+Problem:
+Run PROC SUMMARY with and without NWAY and compare datasets
+
+------------------------
+
+Q16: TYPES Behavior
+Problem:
+Generate summaries at different levels using CLASS variables
+
+------------------------
+
+Q17: Printing Control
+Problem:
+Show output using PROC MEANS
+Do not show output using PROC SUMMARY
+
+
+========================
+BONUS
+========================
+
+Q18: Multiple Statistics
+Problem:
+Generate MEAN, SUM, MIN, MAX for salary and bonus
+
+------------------------
+
+Q19: Output Dataset Structure
+Problem:
+Create output dataset with statistics for salary by dept
+
+------------------------
+
+Q20: Compare Performance Logic
+Problem:
+Write code using PROC MEANS and PROC SUMMARY for same requirement and compare usage

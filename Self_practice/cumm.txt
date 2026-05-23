@@ -1,0 +1,55 @@
+Problem Statement:
+You are given a dataset containing daily sales of products.
+
+Task:
+For each PRODUCT_ID:
+
+1. Calculate cumulative sales (running total) based on DATE
+2. Create a variable CUM_SALES that shows running total of QUANTITY for each product
+3. Reset the cumulative sum for each PRODUCT_ID
+
+---
+
+Create Dataset:
+
+data sales;
+input PRODUCT_ID DATE :date9. QUANTITY;
+format DATE date9.;
+datalines;
+1 01JAN2023 10
+1 02JAN2023 15
+1 03JAN2023 5
+2 01JAN2023 20
+2 02JAN2023 10
+2 03JAN2023 25
+3 01JAN2023 30
+;
+run;
+
+---
+
+Input Table: SALES
+
+## PRODUCT_ID | DATE      | QUANTITY
+
+1          | 01JAN2023 | 10
+1          | 02JAN2023 | 15
+1          | 03JAN2023 | 5
+2          | 01JAN2023 | 20
+2          | 02JAN2023 | 10
+2          | 03JAN2023 | 25
+3          | 01JAN2023 | 30
+
+---
+
+Expected Output:
+
+## PRODUCT_ID | DATE      | QUANTITY | CUM_SALES
+
+1          | 01JAN2023 | 10       | 10
+1          | 02JAN2023 | 15       | 25
+1          | 03JAN2023 | 5        | 30
+2          | 01JAN2023 | 20       | 20
+2          | 02JAN2023 | 10       | 30
+2          | 03JAN2023 | 25       | 55
+3          | 01JAN2023 | 30       | 30

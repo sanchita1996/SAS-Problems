@@ -1,0 +1,204 @@
+PROC SORT Logical Practice Problems (Base → Advanced with Dataset)
+
+---
+
+### 1. Basic Sorting (Single Variable)
+
+Dataset:
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+3 Amit
+1 Neha
+5 Raj
+2 John
+4 Kiran
+;
+run;
+
+Task:
+Sort data by EMP_ID in ascending order.
+
+---
+
+### 2. Sorting in Descending Order
+
+Dataset:
+
+data emp;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 70000
+3 45000
+4 90000
+5 60000
+;
+run;
+
+Task:
+Sort data by SALARY in descending order.
+
+---
+
+### 3. Sorting by Multiple Variables
+
+Dataset:
+
+data emp;
+input DEPT $ EMP_ID SALARY;
+datalines;
+HR 3 50000
+IT 2 70000
+HR 1 60000
+IT 4 90000
+HR 5 45000
+;
+run;
+
+Task:
+Sort data by DEPT and within DEPT by SALARY descending.
+
+---
+
+### 4. Removing Duplicates Using SORT
+
+Dataset:
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+2 Neha
+3 Raj
+3 Raj
+4 John
+;
+run;
+
+Task:
+Remove duplicate records using PROC SORT.
+
+---
+
+### 5. First and Last Logic with BY Group
+
+Dataset:
+
+data trans;
+input CUST_ID AMOUNT;
+datalines;
+101 500
+101 700
+102 300
+103 400
+103 600
+104 900
+;
+run;
+
+Task:
+Sort by CUST_ID and identify first and last transaction per customer.
+
+---
+
+### 6. Sorting with Missing Values
+
+Dataset:
+
+data emp;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 .
+3 70000
+4 60000
+5 .
+;
+run;
+
+Task:
+Sort data by SALARY (missing values handling included).
+
+---
+
+### 7. Ranking After Sorting (Intermediate)
+
+Dataset:
+
+data emp;
+input NAME $ SALARY;
+datalines;
+Amit 50000
+Neha 70000
+Raj 60000
+John 90000
+Kiran 55000
+;
+run;
+
+Task:
+Sort by SALARY descending and assign rank order.
+
+---
+
+### 8. Customer Latest Record
+
+Dataset:
+
+data trans;
+input CUST_ID DATE :date9. AMOUNT;
+format DATE date9.;
+datalines;
+101 01JAN2023 500
+101 05JAN2023 700
+102 02JAN2023 300
+103 10JAN2023 400
+103 20JAN2023 600
+;
+run;
+
+Task:
+Sort by CUST_ID and DATE and identify latest transaction per customer.
+
+---
+
+### 9. Top-N Problem (Advanced)
+
+Dataset:
+
+data sales;
+input PRODUCT $ SALES;
+datalines;
+A 100
+B 500
+C 300
+D 700
+E 200
+;
+run;
+
+Task:
+Sort by SALES descending and extract top 3 products.
+
+---
+
+### 10. Complex Multi-Level Sorting (Advanced)
+
+Dataset:
+
+data emp;
+input DEPT $ NAME $ SALARY EXPERIENCE;
+datalines;
+HR Amit 50000 3
+HR Neha 60000 5
+IT Raj 70000 4
+IT John 70000 2
+FIN Kiran 45000 6
+;
+run;
+
+Task:
+Sort by DEPT, then SALARY descending, then EXPERIENCE ascending.

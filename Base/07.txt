@@ -1,0 +1,64 @@
+Problem Statement:
+You are given two datasets: STUDENTS and MARKS.
+
+STUDENTS contains student details, and MARKS contains subject scores.
+Some students may not have marks records.
+
+Task:
+Create a dataset that shows all students along with their marks.
+If marks are missing, display them as 0.
+
+---
+
+Create Dataset:
+
+data students;
+input STUDENT_ID NAME $ CLASS $;
+datalines;
+1 Amit 10A
+2 Neha 10B
+3 Raj 10A
+4 John 10C
+;
+run;
+
+data marks;
+input STUDENT_ID MATHS SCIENCE;
+datalines;
+1 80 75
+2 90 85
+3 70 65
+;
+run;
+
+---
+
+Input Table: STUDENTS
+
+## STUDENT_ID | NAME  | CLASS
+
+1          | Amit  | 10A
+2          | Neha  | 10B
+3          | Raj   | 10A
+4          | John  | 10C
+
+---
+
+Input Table: MARKS
+
+## STUDENT_ID | MATHS | SCIENCE
+
+1          | 80    | 75
+2          | 90    | 85
+3          | 70    | 65
+
+---
+
+Expected Output:
+
+## STUDENT_ID | NAME  | CLASS | MATHS | SCIENCE
+
+1          | Amit  | 10A   | 80    | 75
+2          | Neha  | 10B   | 90    | 85
+3          | Raj   | 10A   | 70    | 65
+4          | John  | 10C   | 0     | 0

@@ -1,0 +1,313 @@
+SAS LAG Function Practice Problems (Base → Advanced with Dataset + Input/Output)
+
+---
+
+## 1. Basic LAG Usage
+
+### Dataset
+
+data sales;
+input DAY SALES;
+datalines;
+1 100
+2 200
+3 150
+4 250
+5 300
+;
+run;
+
+### Task:
+
+Create a variable PREV_SALES using LAG to show previous day sales.
+
+### Expected Output
+
+## DAY | SALES | PREV_SALES
+
+1   | 100   | .
+2   | 200   | 100
+3   | 150   | 200
+4   | 250   | 150
+5   | 300   | 250
+
+---
+
+## 2. Sales Difference Calculation
+
+### Dataset
+
+data sales;
+input DAY SALES;
+datalines;
+1 500
+2 700
+3 650
+4 800
+;
+run;
+
+### Task:
+
+Create variable SALES_DIFF = current SALES - previous SALES.
+
+### Expected Output
+
+## DAY | SALES | SALES_DIFF
+
+1   | 500   | .
+2   | 700   | 200
+3   | 650   | -50
+4   | 800   | 150
+
+---
+
+## 3. Employee Salary Comparison
+
+### Dataset
+
+data emp;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 55000
+4 70000
+;
+run;
+
+### Task:
+
+Compare salary with previous employee record.
+
+### Expected Output
+
+## EMP_ID | SALARY | DIFF
+
+1      | 50000  | .
+2      | 60000  | 10000
+3      | 55000  | -5000
+4      | 70000  | 15000
+
+---
+
+## 4. Detect Increase or Decrease
+
+### Dataset
+
+data sales;
+input DAY SALES;
+datalines;
+1 100
+2 120
+3 90
+4 150
+5 140
+;
+run;
+
+### Task:
+
+Create variable TREND:
+
+* "UP" if increase
+* "DOWN" if decrease
+* "FIRST" for first record
+
+### Expected Output
+
+## DAY | SALES | TREND
+
+1   | 100   | FIRST
+2   | 120   | UP
+3   | 90    | DOWN
+4   | 150   | UP
+5   | 140   | DOWN
+
+---
+
+## 5. Customer Transaction Comparison
+
+### Dataset
+
+data trans;
+input CUST_ID AMOUNT;
+datalines;
+101 500
+101 700
+101 600
+102 300
+102 400
+;
+run;
+
+### Task:
+
+Create previous transaction amount per customer.
+
+### Expected Output
+
+## CUST_ID | AMOUNT | PREV_AMOUNT
+
+101     | 500    | .
+101     | 700    | 500
+101     | 600    | 700
+102     | 300    | .
+102     | 400    | 300
+
+---
+
+## 6. Reset LAG per Group (Intermediate)
+
+### Dataset
+
+data emp;
+input DEPT $ SALARY;
+datalines;
+HR 50000
+HR 60000
+HR 55000
+IT 70000
+IT 75000
+;
+run;
+
+### Task:
+
+Apply LAG separately for each DEPT.
+
+### Expected Output
+
+## DEPT | SALARY | PREV_SALARY
+
+HR   | 50000  | .
+HR   | 60000  | 50000
+HR   | 55000  | 60000
+IT   | 70000  | .
+IT   | 75000  | 70000
+
+---
+
+## 7. Running Gap Detection
+
+### Dataset
+
+data attendance;
+input DAY STATUS $;
+datalines;
+1 P
+2 P
+3 A
+4 P
+5 P
+;
+run;
+
+### Task:
+
+Detect previous status using LAG.
+
+### Expected Output
+
+## DAY | STATUS | PREV_STATUS
+
+1   | P      | .
+2   | P      | P
+3   | A      | P
+4   | P      | A
+5   | P      | P
+
+---
+
+## 8. Consecutive Difference Analysis
+
+### Dataset
+
+data stock;
+input DAY PRICE;
+datalines;
+1 100
+2 110
+3 105
+4 120
+5 115
+;
+run;
+
+### Task:
+
+Find price change from previous day.
+
+### Expected Output
+
+## DAY | PRICE | CHANGE
+
+1   | 100   | .
+2   | 110   | 10
+3   | 105   | -5
+4   | 120   | 15
+5   | 115   | -5
+
+---
+
+## 9. Interview Trick (Multiple LAG Calls)
+
+### Dataset
+
+data test;
+input VALUE;
+datalines;
+10
+20
+30
+40
+50
+;
+run;
+
+### Task:
+
+Create PREV1 and PREV2 using LAG.
+
+### Expected Output
+
+## VALUE | PREV1 | PREV2
+
+10    | .     | .
+20    | 10    | .
+30    | 20    | 10
+40    | 30    | 20
+50    | 40    | 30
+
+---
+
+## 10. Advanced Business Scenario
+
+### Dataset
+
+data sales;
+input STORE_ID DAY SALES;
+datalines;
+1 1 100
+1 2 120
+1 3 110
+2 1 200
+2 2 220
+2 3 210
+;
+run;
+
+### Task:
+
+Find previous sales per store and detect trend change.
+
+### Expected Output
+
+## STORE_ID | DAY | SALES | PREV_SALES
+
+1        | 1   | 100   | .
+1        | 2   | 120   | 100
+1        | 3   | 110   | 120
+2        | 1   | 200   | .
+2        | 2   | 220   | 200
+2        | 3   | 210   | 220

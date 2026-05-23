@@ -1,0 +1,405 @@
+SAS MERGE Practice Problems (Base → Advanced with Dataset + Input/Output)
+
+---
+
+## 1. Basic Merge (One-to-One)
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 70000
+;
+run;
+
+### Task:
+
+Merge both datasets by EMP_ID.
+
+### Expected Output
+
+## EMP_ID | NAME | SALARY
+
+1      | Amit | 50000
+2      | Neha | 60000
+3      | Raj  | 70000
+
+---
+
+## 2. Left Join Logic (Missing Match Handling)
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+4 John
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 70000
+;
+run;
+
+### Task:
+
+Merge datasets and keep all employees.
+
+### Expected Output
+
+## EMP_ID | NAME | SALARY
+
+1      | Amit | 50000
+2      | Neha | 60000
+3      | Raj  | 70000
+4      | John | .
+
+---
+
+## 3. Right Join Logic
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 70000
+4 80000
+;
+run;
+
+### Task:
+
+Keep all salary records.
+
+### Expected Output
+
+## EMP_ID | NAME | SALARY
+
+1      | Amit | 50000
+2      | Neha | 60000
+3      | Raj  | 70000
+4      | .    | 80000
+
+---
+
+## 4. One-to-Many Merge
+
+### Dataset EMP
+
+data emp;
+input DEPT $ EMP_ID;
+datalines;
+HR 1
+HR 2
+IT 3
+IT 4
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input DEPT $ SALARY;
+datalines;
+HR 50000
+HR 60000
+IT 70000
+IT 80000
+;
+run;
+
+### Task:
+
+Merge datasets by DEPT.
+
+### Expected Output
+
+## DEPT | EMP_ID | SALARY
+
+HR   | 1      | 50000
+HR   | 1      | 60000
+HR   | 2      | 50000
+HR   | 2      | 60000
+IT   | 3      | 70000
+IT   | 3      | 80000
+IT   | 4      | 70000
+IT   | 4      | 80000
+
+---
+
+## 5. Duplicate Key Issue (Interview Trap)
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+1 Amit
+2 Neha
+3 Raj
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 70000
+;
+run;
+
+### Task:
+
+Merge datasets and observe duplicate expansion.
+
+### Expected Output
+
+## EMP_ID | NAME | SALARY
+
+1      | Amit | 50000
+1      | Amit | 50000
+2      | Neha | 60000
+3      | Raj  | 70000
+
+---
+
+## 6. Missing Key in One Dataset
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+5 Kiran
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 70000
+4 80000
+;
+run;
+
+### Task:
+
+Merge datasets and handle unmatched keys.
+
+### Expected Output
+
+## EMP_ID | NAME  | SALARY
+
+1      | Amit  | 50000
+2      | Neha  | 60000
+3      | Raj   | 70000
+4      | .     | 80000
+5      | Kiran | .
+
+---
+
+## 7. First. and Last. with Merge
+
+### Dataset TRANS
+
+data trans;
+input CUST_ID AMOUNT;
+datalines;
+101 500
+101 700
+102 300
+102 400
+103 600
+;
+run;
+
+### Task:
+
+Merge logic + identify FIRST and LAST transaction per customer.
+
+### Expected Output
+
+## CUST_ID | AMOUNT | FLAG
+
+101     | 500    | FIRST
+101     | 700    | LAST
+102     | 300    | FIRST
+102     | 400    | LAST
+103     | 600    | FIRST_LAST
+
+---
+
+## 8. Latest Record Merge (Advanced)
+
+### Dataset EMP
+
+data emp;
+input EMP_ID DATE :date9. SALARY;
+format DATE date9.;
+datalines;
+1 01JAN2023 50000
+1 10FEB2023 60000
+2 05JAN2023 70000
+2 15MAR2023 80000
+;
+run;
+
+### Task:
+
+Keep only latest salary record per employee after merge logic.
+
+### Expected Output
+
+## EMP_ID | DATE      | SALARY
+
+1      | 10FEB2023 | 60000
+2      | 15MAR2023 | 80000
+
+---
+
+## 9. Multi-Dataset Merge (Advanced)
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $ DEPT $;
+datalines;
+1 Amit HR
+2 Neha IT
+3 Raj FIN
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 70000
+;
+run;
+
+### Dataset BONUS
+
+data bonus;
+input EMP_ID BONUS;
+datalines;
+1 5000
+2 6000
+3 7000
+;
+run;
+
+### Task:
+
+Merge all three datasets by EMP_ID.
+
+### Expected Output
+
+## EMP_ID | NAME | DEPT | SALARY | BONUS
+
+1      | Amit | HR   | 50000  | 5000
+2      | Neha | IT   | 60000  | 6000
+3      | Raj  | FIN  | 70000  | 7000
+
+---
+
+## 10. Complex Interview Scenario (Advanced)
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+4 70000
+;
+run;
+
+### Dataset DEPT
+
+data dept;
+input EMP_ID DEPT $;
+datalines;
+1 HR
+2 IT
+3 FIN
+4 MKT
+;
+run;
+
+### Task:
+
+Merge all datasets and handle missing employees and unmatched keys.
+
+### Expected Output
+
+## EMP_ID | NAME | DEPT | SALARY
+
+1      | Amit | HR   | 50000
+2      | Neha | IT   | 60000
+3      | Raj  | FIN  | .
+4      | .    | MKT  | 70000

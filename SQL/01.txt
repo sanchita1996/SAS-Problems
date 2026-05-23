@@ -1,0 +1,47 @@
+==============================
+SAS GROUP BY PRACTICE (EASY)
+==============================
+
+PROBLEM STATEMENT:
+Find total salary for each department.
+
+------------------------------
+INPUT DATASET (CREATE TABLE)
+------------------------------
+
+data emp;
+input emp_id name $ dept $ salary;
+datalines;
+101 Amit HR 30000
+102 Ravi IT 40000
+103 Neha HR 35000
+104 John IT 45000
+105 Sara FIN 50000
+;
+run;
+
+------------------------------
+INPUT DATASET (VIEW)
+------------------------------
+
+emp_id | name | dept | salary
+--------------------------------
+101    | Amit | HR   | 30000
+102    | Ravi | IT   | 40000
+103    | Neha | HR   | 35000
+104    | John | IT   | 45000
+105    | Sara | FIN  | 50000
+
+------------------------------
+REQUIRED OUTPUT
+------------------------------
+
+dept | total_salary
+----------------------
+HR   | 65000
+IT   | 85000
+FIN  | 50000
+
+==============================
+END
+==============================

@@ -1,0 +1,64 @@
+Problem Statement:
+You are given two datasets: ORDERS and CUSTOMERS.
+
+ORDERS contains order details, and CUSTOMERS contains customer information.
+Some customers may not have placed any orders.
+
+Task:
+Create a dataset that shows all customers along with their order details.
+If order details are missing, display ORDER_ID as . and AMOUNT as 0.
+
+---
+
+Create Dataset:
+
+data orders;
+input ORDER_ID CUSTOMER_ID AMOUNT;
+datalines;
+101 1 500
+102 2 700
+103 3 400
+;
+run;
+
+data customers;
+input CUSTOMER_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+4 John
+;
+run;
+
+---
+
+Input Table: ORDERS
+
+## ORDER_ID | CUSTOMER_ID | AMOUNT
+
+101      | 1           | 500
+102      | 2           | 700
+103      | 3           | 400
+
+---
+
+Input Table: CUSTOMERS
+
+## CUSTOMER_ID | NAME
+
+1           | Amit
+2           | Neha
+3           | Raj
+4           | John
+
+---
+
+Expected Output:
+
+## CUSTOMER_ID | NAME  | ORDER_ID | AMOUNT
+
+1           | Amit  | 101      | 500
+2           | Neha  | 102      | 700
+3           | Raj   | 103      | 400
+4           | John  | .        | 0

@@ -1,0 +1,56 @@
+Problem Statement:
+You are given a dataset containing employee transaction records.
+Each employee has multiple records across different dates.
+
+Task:
+For each EMP_ID:
+
+1. Identify the first and last transaction
+2. Create a variable RECORD_TYPE:
+
+   * "FIRST" for the earliest record per employee
+   * "LAST" for the latest record per employee
+   * "MIDDLE" for all other records
+
+---
+
+Create Dataset:
+
+data emp_tran;
+input EMP_ID DATE :date9. AMOUNT;
+format DATE date9.;
+datalines;
+1 01JAN2023 500
+1 10JAN2023 600
+1 20JAN2023 700
+2 05JAN2023 300
+2 15JAN2023 400
+3 01FEB2023 800
+;
+run;
+
+---
+
+Input Table: EMP_TRAN
+
+## EMP_ID | DATE      | AMOUNT
+
+1      | 01JAN2023 | 500
+1      | 10JAN2023 | 600
+1      | 20JAN2023 | 700
+2      | 05JAN2023 | 300
+2      | 15JAN2023 | 400
+3      | 01FEB2023 | 800
+
+---
+
+Expected Output:
+
+## EMP_ID | DATE      | AMOUNT | RECORD_TYPE
+
+1      | 01JAN2023 | 500    | FIRST
+1      | 10JAN2023 | 600    | MIDDLE
+1      | 20JAN2023 | 700    | LAST
+2      | 05JAN2023 | 300    | FIRST
+2      | 15JAN2023 | 400    | LAST
+3      | 01FEB2023 | 800    | FIRST

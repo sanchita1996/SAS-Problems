@@ -1,0 +1,109 @@
+========================
+BASIC DIFFERENCE
+========================
+
+SUM FUNCTION:
+- Handles missing values automatically
+- Ignores missing values
+- Returns sum of non-missing values
+
++ OPERATOR:
+- Does NOT handle missing values
+- If any value is missing, result becomes missing
+
+
+========================
+EXAMPLE DATASET
+========================
+
+data test;
+input a b;
+datalines;
+10 20
+10 .
+. 20
+. .
+;
+run;
+
+
+========================
+USING + OPERATOR
+========================
+
+data plus_result;
+set test;
+total = a + b;
+run;
+
+Output:
+a   | b   | total
+10  | 20  | 30
+10  | .   | .
+.   | 20  | .
+.   | .   | .
+
+
+========================
+USING SUM FUNCTION
+========================
+
+data sum_result;
+set test;
+total = sum(a,b);
+run;
+
+Output:
+a   | b   | total
+10  | 20  | 30
+10  | .   | 10
+.   | 20  | 20
+.   | .   | 0
+
+
+========================
+KEY DIFFERENCES
+========================
+
+1. MISSING VALUE HANDLING
+SUM(a,b)  -> ignores missing
+a + b     -> result missing if any missing
+
+2. RESULT WHEN ALL VALUES MISSING
+SUM(a,b)  -> returns 0
+a + b     -> returns missing (.)
+
+3. USAGE
+SUM()     -> preferred in data cleaning / clinical programming
++         -> used when strict arithmetic required
+
+
+========================
+INTERVIEW IMPORTANT POINT
+========================
+
+- SUM() is safer when data contains missing values
+- + operator can lead to unexpected missing results
+
+
+========================
+BONUS: SUM STATEMENT (DIFFERENT)
+========================
+
+data test2;
+set test;
+total + a;
+run;
+
+Behavior:
+- Automatically RETAINS value
+- Treats missing as 0
+- Creates running total
+
+
+========================
+FINAL TAKEAWAY
+========================
+
+SUM() -> ignore missing → safe
++     -> strict addition → risky with missing

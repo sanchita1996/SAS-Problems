@@ -1,0 +1,46 @@
+Problem Statement:
+You are given a dataset containing employee transaction records.
+Each employee may have multiple records with different dates.
+
+Task:
+Remove duplicate EMP_ID records and keep only the **latest record (based on DATE)** for each employee.
+
+---
+
+Create Dataset:
+
+data emp_trans;
+input EMP_ID DATE :date9. SALARY;
+format DATE date9.;
+datalines;
+1 01JAN2023 50000
+1 15FEB2023 52000
+2 10JAN2023 60000
+2 05JAN2023 58000
+3 20MAR2023 55000
+3 20MAR2023 55000
+;
+run;
+
+---
+
+Input Table: EMP_TRANS
+
+## EMP_ID | DATE      | SALARY
+
+1      | 01JAN2023 | 50000
+1      | 15FEB2023 | 52000
+2      | 10JAN2023 | 60000
+2      | 05JAN2023 | 58000
+3      | 20MAR2023 | 55000
+3      | 20MAR2023 | 55000
+
+---
+
+Expected Output:
+
+## EMP_ID | DATE      | SALARY
+
+1      | 15FEB2023 | 52000
+2      | 10JAN2023 | 60000
+3      | 20MAR2023 | 55000

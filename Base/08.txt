@@ -1,0 +1,45 @@
+Problem Statement:
+You are given a dataset containing employee transactions across different departments.
+Each employee may have multiple transactions within the same department.
+
+Task:
+For each DEPT, keep only the **first occurring employee record**.
+
+---
+
+Create Dataset:
+
+data emp_dept;
+input DEPT $ EMP_ID NAME $;
+datalines;
+HR 1 Amit
+HR 2 Neha
+IT 3 Raj
+IT 4 John
+FIN 5 Ravi
+FIN 6 Kiran
+;
+run;
+
+---
+
+Input Table: EMP_DEPT
+
+## DEPT | EMP_ID | NAME
+
+HR   | 1      | Amit
+HR   | 2      | Neha
+IT   | 3      | Raj
+IT   | 4      | John
+FIN  | 5      | Ravi
+FIN  | 6      | Kiran
+
+---
+
+Expected Output:
+
+## DEPT | EMP_ID | NAME
+
+HR   | 1      | Amit
+IT   | 3      | Raj
+FIN  | 5      | Ravi

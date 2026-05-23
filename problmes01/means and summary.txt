@@ -1,0 +1,150 @@
+========================
+PROC MEANS vs PROC SUMMARY
+========================
+
+BASIC DIFFERENCE:
+
+PROC MEANS:
+- Produces printed output by default
+- Used for quick analysis and reporting
+
+PROC SUMMARY:
+- Does NOT print output by default
+- Used mainly to create output datasets
+
+
+========================
+EXAMPLE DATASET
+========================
+
+data emp;
+input dept $ salary;
+datalines;
+HR 1000
+HR 2000
+IT 3000
+IT 4000
+;
+run;
+
+
+========================
+PROC MEANS EXAMPLE
+========================
+
+Problem:
+Calculate mean salary by department
+
+Code:
+proc means data=emp;
+class dept;
+var salary;
+run;
+
+Output:
+- Printed output will be shown in result window
+- Shows MEAN, N, MIN, MAX etc.
+
+
+------------------------
+
+PROC MEANS WITH OUTPUT DATASET
+
+Code:
+proc means data=emp noprint;
+class dept;
+var salary;
+output out=mean_out mean=avg_salary;
+run;
+
+Output Dataset:
+dept | avg_salary
+HR   | 1500
+IT   | 3500
+
+
+========================
+PROC SUMMARY EXAMPLE
+========================
+
+Problem:
+Calculate mean salary by department
+
+Code:
+proc summary data=emp;
+class dept;
+var salary;
+output out=summary_out mean=avg_salary;
+run;
+
+Output:
+- No printed output
+- Only dataset created
+
+
+------------------------
+
+PROC SUMMARY WITH NWAY
+
+Code:
+proc summary data=emp nway;
+class dept;
+var salary;
+output out=summary_out mean=avg_salary;
+run;
+
+Output Dataset:
+dept | avg_salary
+HR   | 1500
+IT   | 3500
+
+
+========================
+KEY DIFFERENCES
+========================
+
+1. PRINTING
+PROC MEANS   -> prints output by default
+PROC SUMMARY -> no output printed
+
+2. USAGE
+PROC MEANS   -> reporting / quick view
+PROC SUMMARY -> dataset creation / backend processing
+
+3. PERFORMANCE
+Both similar, but SUMMARY preferred in production
+
+4. NWAY BEHAVIOR
+PROC MEANS   -> shows multiple levels by default
+PROC SUMMARY -> same, but NWAY commonly used
+
+5. DEFAULT OUTPUT
+PROC MEANS   -> visible results
+PROC SUMMARY -> silent unless printed
+
+
+========================
+INTERVIEW IMPORTANT POINT
+========================
+
+- PROC MEANS = PROC SUMMARY + PRINTING
+- Most programmers use PROC SUMMARY in production code
+
+
+========================
+BONUS COMPARISON
+========================
+
+PROC MEANS WITHOUT NOPRINT:
+-> shows output
+
+PROC MEANS WITH NOPRINT:
+-> behaves like PROC SUMMARY
+
+
+========================
+FINAL TAKEAWAY
+========================
+
+Use PROC MEANS  -> when you want to SEE output
+Use PROC SUMMARY -> when you want to CREATE dataset

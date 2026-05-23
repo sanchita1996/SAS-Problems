@@ -1,0 +1,71 @@
+Problem Statement:
+You are given a dataset containing employee attendance records.
+Each employee may have multiple records for different dates.
+
+Task:
+For each EMP_ID:
+
+1. Calculate the number of consecutive days present
+2. Reset the count whenever STATUS = "A" (Absent)
+3. Create a variable STREAK that shows current consecutive "P" (Present) days
+
+---
+
+Create Dataset:
+
+data attendance;
+input EMP_ID DATE :date9. STATUS $;
+format DATE date9.;
+datalines;
+1 01JAN2023 P
+1 02JAN2023 P
+1 03JAN2023 A
+1 04JAN2023 P
+1 05JAN2023 P
+2 01JAN2023 P
+2 02JAN2023 A
+2 03JAN2023 P
+2 04JAN2023 P
+3 01JAN2023 A
+3 02JAN2023 P
+3 03JAN2023 P
+;
+run;
+
+---
+
+Input Table: ATTENDANCE
+
+## EMP_ID | DATE      | STATUS
+
+1      | 01JAN2023 | P
+1      | 02JAN2023 | P
+1      | 03JAN2023 | A
+1      | 04JAN2023 | P
+1      | 05JAN2023 | P
+2      | 01JAN2023 | P
+2      | 02JAN2023 | A
+2      | 03JAN2023 | P
+2      | 04JAN2023 | P
+3      | 01JAN2023 | A
+3      | 02JAN2023 | P
+3      | 03JAN2023 | P
+
+---
+
+Expected Output:
+
+## EMP_ID | DATE      | STATUS | STREAK
+
+1      | 01JAN2023 | P      | 1
+1      | 02JAN2023 | P      | 2
+1      | 03JAN2023 | A      | 0
+1      | 04JAN2023 | P      | 1
+1      | 05JAN2023 | P      | 2
+2      | 01JAN2023 | P      | 1
+2      | 02JAN2023 | A      | 0
+2      | 03JAN2023 | P      | 1
+2      | 04JAN2023 | P      | 2
+3      | 01JAN2023 | A      | 0
+3      | 02JAN2023 | P      | 1
+3      | 03JAN2023 | P      | 2

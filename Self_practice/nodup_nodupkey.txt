@@ -1,0 +1,213 @@
+PROC SORT (NODUP / NODUPKEY) Practice Problems (Base → Advanced)
+
+---
+
+### 1. Basic Duplicate Removal (NODUP)
+
+Dataset:
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+2 Neha
+3 Raj
+4 John
+4 John
+;
+run;
+
+Task:
+Remove exact duplicate rows using PROC SORT.
+
+---
+
+### 2. Duplicate Key Removal (NODUPKEY)
+
+Dataset:
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+2 Raj
+3 Raj
+4 John
+;
+run;
+
+Task:
+Keep only one record per EMP_ID using NODUPKEY.
+
+---
+
+### 3. Multiple Column Duplicate (NODUPKEY)
+
+Dataset:
+
+data emp;
+input EMP_ID DEPT $ SALARY;
+datalines;
+1 HR 50000
+1 HR 50000
+2 IT 60000
+2 IT 65000
+3 FIN 70000
+3 FIN 70000
+;
+run;
+
+Task:
+Remove duplicates based on EMP_ID + DEPT + SALARY.
+
+---
+
+### 4. Difference Between NODUP and NODUPKEY
+
+Dataset:
+
+data emp;
+input EMP_ID NAME $ DEPT $;
+datalines;
+1 Amit HR
+1 Amit HR
+1 Amit IT
+2 Neha IT
+2 Neha IT
+;
+run;
+
+Task:
+Compare output of NODUP vs NODUPKEY.
+
+---
+
+### 5. Keep First Record per Employee
+
+Dataset:
+
+data emp;
+input EMP_ID DATE :date9. SALARY;
+format DATE date9.;
+datalines;
+1 01JAN2023 50000
+1 05JAN2023 60000
+1 10JAN2023 70000
+2 02JAN2023 40000
+2 08JAN2023 45000
+;
+run;
+
+Task:
+Sort by EMP_ID and DATE and keep only one record per EMP_ID using NODUPKEY.
+
+---
+
+### 6. Customer Duplicate Transactions
+
+Dataset:
+
+data trans;
+input CUST_ID AMOUNT;
+datalines;
+101 500
+101 500
+101 700
+102 300
+102 300
+103 400
+;
+run;
+
+Task:
+Remove duplicate transactions using PROC SORT.
+
+---
+
+### 7. Latest Record per Customer (Advanced NODUPKEY Logic)
+
+Dataset:
+
+data trans;
+input CUST_ID DATE :date9. AMOUNT;
+format DATE date9.;
+datalines;
+101 01JAN2023 500
+101 05JAN2023 700
+102 02JAN2023 300
+102 10JAN2023 400
+103 15JAN2023 600
+;
+run;
+
+Task:
+Sort data and keep only latest record per customer using NODUPKEY logic.
+
+---
+
+### 8. Product-Level Deduplication
+
+Dataset:
+
+data sales;
+input PRODUCT $ REGION $ SALES;
+datalines;
+A IN 100
+A IN 100
+A US 200
+B IN 300
+B IN 300
+B US 400
+;
+run;
+
+Task:
+Remove duplicates based on PRODUCT + REGION.
+
+---
+
+### 9. First Occurrence Retention
+
+Dataset:
+
+data emp;
+input EMP_ID DEPT $;
+datalines;
+1 HR
+1 IT
+1 FIN
+2 IT
+2 HR
+3 FIN
+;
+run;
+
+Task:
+Sort and keep only first occurrence of each EMP_ID using NODUPKEY.
+
+---
+
+### 10. Interview Trick Question (NODUP vs BY Group)
+
+Dataset:
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+1 Amit
+1 Amit
+2 Neha
+2 Neha
+3 Raj
+;
+run;
+
+Task:
+Identify how many rows remain after applying:
+
+* NODUP
+* NODUPKEY
+  and explain difference through output.

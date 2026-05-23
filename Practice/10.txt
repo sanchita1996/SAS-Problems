@@ -1,0 +1,71 @@
+========================================
+SAS SQL PRACTICE (PRODUCTS NOT SOLD)
+========================================
+
+PROBLEM STATEMENT:
+Find all products that were never sold.
+
+----------------------------------------
+INPUT DATASET 1 (PRODUCTS)
+----------------------------------------
+
+data products;
+input product_id product_name $;
+datalines;
+1001 Pen
+1002 Pencil
+1003 Notebook
+1004 Eraser
+1005 Marker
+;
+run;
+
+----------------------------------------
+INPUT DATASET 2 (SALES)
+----------------------------------------
+
+data sales;
+input sale_id product_id quantity;
+datalines;
+1 1001 10
+2 1002 20
+3 1001 5
+4 1003 15
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+PRODUCTS
+
+product_id | product_name
+-----------------------------
+1001       | Pen
+1002       | Pencil
+1003       | Notebook
+1004       | Eraser
+1005       | Marker
+
+SALES
+
+sale_id | product_id | quantity
+--------------------------------
+1       | 1001       | 10
+2       | 1002       | 20
+3       | 1001       | 5
+4       | 1003       | 15
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+product_id | product_name
+-----------------------------
+1004       | Eraser
+1005       | Marker
+
+========================================
+END
+========================================

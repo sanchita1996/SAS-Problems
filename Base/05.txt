@@ -1,0 +1,42 @@
+Problem Statement:
+You are given a dataset containing FIRST_NAME, LAST_NAME, and CITY.
+
+Task:
+Create a new variable FULL_INFO using CATX function by concatenating:
+FIRST_NAME, LAST_NAME, and CITY with "-" as a delimiter.
+
+---
+
+Create Dataset:
+
+data emp;
+input FIRST_NAME $ LAST_NAME $ CITY $;
+datalines;
+Amit Sharma Delhi
+Neha Verma Mumbai
+Raj Singh Pune
+John Doe Chennai
+;
+run;
+
+---
+
+Input Table: EMP
+
+## FIRST_NAME | LAST_NAME | CITY
+
+Amit       | Sharma    | Delhi
+Neha       | Verma     | Mumbai
+Raj        | Singh     | Pune
+John       | Doe       | Chennai
+
+---
+
+Expected Output:
+
+## FIRST_NAME | LAST_NAME | CITY    | FULL_INFO
+
+Amit       | Sharma    | Delhi   | Amit-Sharma-Delhi
+Neha       | Verma     | Mumbai  | Neha-Verma-Mumbai
+Raj        | Singh     | Pune    | Raj-Singh-Pune
+John       | Doe       | Chennai | John-Doe-Chennai

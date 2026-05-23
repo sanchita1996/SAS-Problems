@@ -1,0 +1,48 @@
+========================================
+SAS SQL PRACTICE (FILTER ON SUMMARY)
+========================================
+
+PROBLEM STATEMENT:
+Find departments where the total salary is greater than 70000.
+
+----------------------------------------
+INPUT DATASET (CREATE TABLE)
+----------------------------------------
+
+data emp;
+input emp_id name $ dept $ salary;
+datalines;
+101 Amit HR 30000
+102 Ravi IT 40000
+103 Neha HR 35000
+104 John IT 45000
+105 Sara FIN 50000
+106 Raj HR 10000
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+emp_id | name | dept | salary
+--------------------------------
+101    | Amit | HR   | 30000
+102    | Ravi | IT   | 40000
+103    | Neha | HR   | 35000
+104    | John | IT   | 45000
+105    | Sara | FIN  | 50000
+106    | Raj  | HR   | 10000
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+dept | total_salary
+----------------------
+IT   | 85000
+HR   | 75000
+
+========================================
+END
+========================================

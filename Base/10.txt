@@ -1,0 +1,42 @@
+Problem Statement:
+You are given a dataset containing EMAIL values.
+
+Each email follows the pattern:
+username@domain.com
+
+Task:
+Create three new variables:
+
+USERNAME → text before "@"
+DOMAIN → text between "@" and "."
+EXTENSION → text after "."
+
+Create Dataset:
+
+data emails;
+input EMAIL $50.;
+datalines;
+"amit.sharma@gmail.com"
+"neha_verma@yahoo.in"
+"raj.singh@outlook.com"
+"john.doe@company.org"
+;
+run;
+
+Input Table: EMAILS
+
+EMAIL
+
+"amit.sharma@gmail.com"
+"neha_verma@yahoo.in"
+"raj.singh@outlook.com"
+"john.doe@company.org"
+
+Expected Output:
+
+EMAIL | USERNAME | DOMAIN | EXTENSION
+
+"amit.sharma@gmail.com" | amit.sharma | gmail | com
+"neha_verma@yahoo.in" | neha_verma | yahoo | in
+"raj.singh@outlook.com" | raj.singh | outlook | com
+"john.doe@company.org" | john.doe | company | org

@@ -1,0 +1,64 @@
+Problem Statement:
+You are given two datasets: EMP and SALARY.
+
+EMP contains employee details, and SALARY contains salary information.
+Some employees may not have salary records.
+
+Task:
+Create a dataset that shows all employees along with their salary.
+If salary is missing, show it as 0.
+
+---
+
+Create Dataset:
+
+data emp;
+input EMP_ID NAME $ DEPT $;
+datalines;
+1 Amit HR
+2 Neha IT
+3 Raj FIN
+4 John MKT
+;
+run;
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+3 55000
+;
+run;
+
+---
+
+Input Table: EMP
+
+## EMP_ID | NAME  | DEPT
+
+1      | Amit  | HR
+2      | Neha  | IT
+3      | Raj   | FIN
+4      | John  | MKT
+
+---
+
+Input Table: SALARY
+
+## EMP_ID | SALARY
+
+1      | 50000
+2      | 60000
+3      | 55000
+
+---
+
+Expected Output:
+
+## EMP_ID | NAME  | DEPT | SALARY
+
+1      | Amit  | HR   | 50000
+2      | Neha  | IT   | 60000
+3      | Raj   | FIN  | 55000
+4      | John  | MKT  | 0

@@ -1,0 +1,61 @@
+========================================
+SAS SQL PRACTICE (REVENUE FROM NEW CUSTOMERS - FIRST ORDERS)
+========================================
+
+PROBLEM STATEMENT:
+Calculate revenue generated from new customers (first-time orders).
+
+----------------------------------------
+INPUT DATASET (ORDERS)
+----------------------------------------
+
+data orders;
+input order_id customer_id order_date :date9. total_amount;
+format order_date date9.;
+datalines;
+1 101 01JAN2024 200
+2 102 05JAN2024 300
+3 101 10FEB2024 150
+4 103 15FEB2024 400
+5 102 20MAR2024 250
+6 104 25MAR2024 500
+7 103 05APR2024 350
+8 105 10APR2024 450
+9 104 15MAY2024 600
+10 105 20MAY2024 700
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+ORDERS
+
+order_id | customer_id | order_date | total_amount
+--------------------------------------------------
+1        | 101         | 01JAN2024  | 200
+2        | 102         | 05JAN2024  | 300
+3        | 101         | 10FEB2024  | 150
+4        | 103         | 15FEB2024  | 400
+5        | 102         | 20MAR2024  | 250
+6        | 104         | 25MAR2024  | 500
+7        | 103         | 05APR2024  | 350
+8        | 105         | 10APR2024  | 450
+9        | 104         | 15MAY2024  | 600
+10       | 105         | 20MAY2024  | 700
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+new_revenue
+------------
+1850
+
+(Explanation: First orders per customer → 101:200, 102:300, 103:400, 104:500, 105:450.  
+Total revenue from first-time orders = 200 + 300 + 400 + 500 + 450 = 1850.)
+
+========================================
+END
+========================================

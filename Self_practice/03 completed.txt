@@ -1,0 +1,48 @@
+Problem Statement:
+You are given a dataset containing employee salaries across different departments.
+
+Task:
+For each DEPT:
+
+1. Calculate total salary of the department
+2. Calculate percentage contribution of each employee’s salary to their department total
+   (EMP_SALARY / TOTAL_DEPT_SALARY * 100)
+
+---
+
+Create Dataset:
+
+data emp;
+input EMP_ID NAME $ DEPT $ SALARY;
+datalines;
+1 Amit HR 50000
+2 Neha HR 60000
+3 Raj IT 70000
+4 John IT 30000
+5 Kiran FIN 40000
+;
+run;
+
+---
+
+Input Table: EMP
+
+## EMP_ID | NAME  | DEPT | SALARY
+
+1      | Amit  | HR   | 50000
+2      | Neha  | HR   | 60000
+3      | Raj   | IT   | 70000
+4      | John  | IT   | 30000
+5      | Kiran | FIN  | 40000
+
+---
+
+Expected Output:
+
+## EMP_ID | NAME  | DEPT | SALARY | TOTAL_DEPT_SALARY | PERCENT
+
+1      | Amit  | HR   | 50000  | 110000            | 45.45
+2      | Neha  | HR   | 60000  | 110000            | 54.55
+3      | Raj   | IT   | 70000  | 100000            | 70.00
+4      | John  | IT   | 30000  | 100000            | 30.00
+5      | Kiran | FIN  | 40000  | 40000             | 100.00

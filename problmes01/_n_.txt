@@ -1,0 +1,359 @@
+========================
+EASY LEVEL
+========================
+
+Q1: Add Row Number
+Problem:
+Create a variable ROW_NUM using _N_
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+;
+run;
+
+Expected Output:
+name | salary | row_num
+A    | 1000   | 1
+B    | 2000   | 2
+C    | 3000   | 3
+
+
+------------------------
+
+Q2: Keep First 3 Rows
+Problem:
+Keep only first 3 observations using _N_
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+D 4000
+E 5000
+;
+run;
+
+Expected Output:
+name | salary
+A    | 1000
+B    | 2000
+C    | 3000
+
+
+------------------------
+
+Q3: Even Odd Flag
+Problem:
+Create FLAG = EVEN if row number is even else ODD
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+D 4000
+;
+run;
+
+Expected Output:
+name | salary | flag
+A    | 1000   | ODD
+B    | 2000   | EVEN
+C    | 3000   | ODD
+D    | 4000   | EVEN
+
+
+========================
+MEDIUM LEVEL
+========================
+
+Q4: Select Every 2nd Row
+Problem:
+Keep only every second observation
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+D 4000
+E 5000
+;
+run;
+
+Expected Output:
+name | salary
+B    | 2000
+D    | 4000
+
+
+------------------------
+
+Q5: Create Group of 2 Rows
+Problem:
+Assign GROUP_ID such that every 2 rows belong to same group
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+D 4000
+E 5000
+;
+run;
+
+Expected Output:
+name | salary | group_id
+A    | 1000   | 1
+B    | 2000   | 1
+C    | 3000   | 2
+D    | 4000   | 2
+E    | 5000   | 3
+
+
+------------------------
+
+Q6: Split Dataset
+Problem:
+First 2 rows → dataset FIRST_PART
+Remaining rows → dataset SECOND_PART
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+D 4000
+;
+run;
+
+
+------------------------
+
+Q7: Running Total
+Problem:
+Create cumulative sum of salary
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+300
+400
+;
+run;
+
+Expected Output:
+salary | run_sum
+100    | 100
+200    | 300
+300    | 600
+400    | 1000
+
+
+========================
+ADVANCED LEVEL
+========================
+
+Q8: Reverse Row Number
+Problem:
+Assign reverse row numbers (last row = 1)
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+D 4000
+;
+run;
+
+Expected Output:
+name | salary | rev_row
+A    | 1000   | 4
+B    | 2000   | 3
+C    | 3000   | 2
+D    | 4000   | 1
+
+
+------------------------
+
+Q9: Batch of 3 Rows
+Problem:
+Assign BATCH_ID such that every 3 rows form one batch
+
+Input Dataset:
+data emp;
+input name $;
+datalines;
+A
+B
+C
+D
+E
+F
+G
+;
+run;
+
+Expected Output:
+name | batch_id
+A    | 1
+B    | 1
+C    | 1
+D    | 2
+E    | 2
+F    | 2
+G    | 3
+
+
+------------------------
+
+Q10: Compare with Previous Row
+Problem:
+Create FLAG:
+INCREASE if salary > previous row
+DECREASE if salary < previous row
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+150
+300
+;
+run;
+
+Expected Output:
+salary | flag
+100    | .
+200    | INCREASE
+150    | DECREASE
+300    | INCREASE
+
+
+------------------------
+
+Q11: Stop Processing Early
+Problem:
+Stop reading dataset once salary > 2500
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+1000
+2000
+3000
+4000
+;
+run;
+
+Expected Output:
+salary
+1000
+2000
+
+
+------------------------
+
+Q12: First 2 Rows Per Group
+Problem:
+For each department, keep only first 2 rows
+
+Input Dataset:
+data emp;
+input dept $ name $;
+datalines;
+HR A
+HR B
+HR C
+IT D
+IT E
+IT F
+;
+run;
+
+Expected Output:
+dept | name
+HR   | A
+HR   | B
+IT   | D
+IT   | E
+
+
+========================
+BONUS
+========================
+
+Q13: Custom Sequence
+Problem:
+Create sequence: 1,1,2,2,3,3,...
+
+Input Dataset:
+data dummy;
+do i = 1 to 6;
+output;
+end;
+run;
+
+
+------------------------
+
+Q14: Skip First Row
+Problem:
+Remove first observation
+
+Input Dataset:
+data emp;
+input name $;
+datalines;
+A
+B
+C
+;
+run;
+
+
+------------------------
+
+Q15: Range Filter
+Problem:
+Keep observations where row number between 3 and 6
+
+Input Dataset:
+data emp;
+input name $;
+datalines;
+A
+B
+C
+D
+E
+F
+G
+;
+run;

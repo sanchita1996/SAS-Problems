@@ -1,0 +1,307 @@
+SAS SET Statement Practice Problems (Base → Advanced with Input & Output)
+
+---
+
+## 1. Basic Dataset Append (SET)
+
+### Dataset 1
+
+data emp1;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+;
+run;
+
+### Dataset 2
+
+data emp2;
+input EMP_ID NAME $;
+datalines;
+4 John
+5 Kiran
+;
+run;
+
+### Task:
+
+Combine both datasets using SET statement.
+
+### Expected Output
+
+## EMP_ID | NAME
+
+1      | Amit
+2      | Neha
+3      | Raj
+4      | John
+5      | Kiran
+
+---
+
+## 2. Identify Source Dataset
+
+### Dataset 1
+
+data hr;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+;
+run;
+
+### Dataset 2
+
+data it;
+input EMP_ID NAME $;
+datalines;
+3 Raj
+4 John
+;
+run;
+
+### Task:
+
+Combine datasets and create variable SOURCE.
+
+### Expected Output
+
+## EMP_ID | NAME | SOURCE
+
+1      | Amit | HR
+2      | Neha | HR
+3      | Raj  | IT
+4      | John | IT
+
+---
+
+## 3. Unequal Columns Handling
+
+### Dataset 1
+
+data emp1;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+;
+run;
+
+### Dataset 2
+
+data emp2;
+input EMP_ID NAME $ SALARY;
+datalines;
+3 Raj 50000
+4 John 60000
+;
+run;
+
+### Task:
+
+Combine datasets handling missing columns.
+
+### Expected Output
+
+## EMP_ID | NAME | SALARY
+
+1      | Amit | .
+2      | Neha | .
+3      | Raj  | 50000
+4      | John | 60000
+
+---
+
+## 4. Filtering After SET
+
+### Dataset
+
+data emp;
+input EMP_ID DEPT $;
+datalines;
+1 HR
+2 IT
+3 HR
+4 FIN
+5 IT
+;
+run;
+
+### Task:
+
+Keep only HR department.
+
+### Expected Output
+
+## EMP_ID | DEPT
+
+1      | HR
+3      | HR
+
+---
+
+## 5. Cumulative Sum Using SET
+
+### Dataset
+
+data sales;
+input DAY SALES;
+datalines;
+1 100
+2 200
+3 150
+4 250
+;
+run;
+
+### Task:
+
+Calculate running total SALES.
+
+### Expected Output
+
+## DAY | SALES | RUNNING_TOTAL
+
+1   | 100   | 100
+2   | 200   | 300
+3   | 150   | 450
+4   | 250   | 700
+
+---
+
+## 6. Multiple SET (Stacking)
+
+### Dataset Q1
+
+data q1;
+input ID SALES;
+datalines;
+1 100
+2 200
+;
+run;
+
+### Dataset Q2
+
+data q2;
+input ID SALES;
+datalines;
+3 300
+4 400
+;
+run;
+
+### Task:
+
+Combine quarterly datasets.
+
+### Expected Output
+
+## ID | SALES
+
+1  | 100
+2  | 200
+3  | 300
+4  | 400
+
+---
+
+## 7. BY Group Processing
+
+### Dataset
+
+data emp;
+input DEPT $ EMP_ID SALARY;
+datalines;
+HR 1 50000
+HR 2 60000
+IT 3 70000
+IT 4 80000
+FIN 5 90000
+;
+run;
+
+### Task:
+
+Find total salary per department.
+
+### Expected Output
+
+## DEPT | TOTAL_SALARY
+
+HR   | 110000
+IT   | 150000
+FIN  | 90000
+
+---
+
+## 8. First. and Last. Logic
+
+### Dataset
+
+data trans;
+input CUST_ID AMOUNT;
+datalines;
+101 500
+101 700
+102 300
+102 400
+103 600
+;
+run;
+
+### Task:
+
+Identify first and last transaction per customer.
+
+### Expected Output
+
+## CUST_ID | AMOUNT | FLAG
+
+101     | 500    | FIRST
+101     | 700    | LAST
+102     | 300    | FIRST
+102     | 400    | LAST
+103     | 600    | FIRST_LAST
+
+---
+
+## 9. Real Business Join using SET
+
+### Dataset EMP
+
+data emp;
+input EMP_ID NAME $;
+datalines;
+1 Amit
+2 Neha
+3 Raj
+;
+run;
+
+### Dataset SALARY
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+1 50000
+2 60000
+4 70000
+;
+run;
+
+### Task:
+
+Combine datasets and show salary if available.
+
+### Expected Output
+
+## EMP_ID | NAME | SALARY
+
+1      | Amit | 50000
+2      | Neha | 60000
+3      | Raj  | .
+4      | .    | 70000

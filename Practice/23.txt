@@ -1,0 +1,63 @@
+========================================
+SAS SQL PRACTICE (CUSTOMERS WITH CONSECUTIVE PURCHASES - 2 DAYS)
+========================================
+
+PROBLEM STATEMENT:
+Retrieve customers who made consecutive purchases within 2 days.
+
+----------------------------------------
+INPUT DATASET (ORDERS)
+----------------------------------------
+
+data orders;
+input order_id customer_id order_date :date9.;
+format order_date date9.;
+datalines;
+1 101 01JAN2024
+2 102 02JAN2024
+3 101 02JAN2024
+4 103 05JAN2024
+5 101 03JAN2024
+6 102 04JAN2024
+7 103 06JAN2024
+8 101 10JAN2024
+9 102 11JAN2024
+10 103 12JAN2024
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+ORDERS
+
+order_id | customer_id | order_date
+-----------------------------------
+1        | 101         | 01JAN2024
+2        | 102         | 02JAN2024
+3        | 101         | 02JAN2024
+4        | 103         | 05JAN2024
+5        | 101         | 03JAN2024
+6        | 102         | 04JAN2024
+7        | 103         | 06JAN2024
+8        | 101         | 10JAN2024
+9        | 102         | 11JAN2024
+10       | 103         | 12JAN2024
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+customer_id | order_date | prev_order_date
+------------------------------------------
+101         | 02JAN2024  | 01JAN2024
+101         | 03JAN2024  | 02JAN2024
+102         | 04JAN2024  | 02JAN2024
+103         | 06JAN2024  | 05JAN2024
+102         | 11JAN2024  | 10JAN2024
+103         | 12JAN2024  | 11JAN2024
+
+========================================
+END
+========================================

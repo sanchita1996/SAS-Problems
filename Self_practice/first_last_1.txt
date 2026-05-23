@@ -1,0 +1,64 @@
+Problem Statement:
+You are given a dataset containing employee transaction records across multiple dates.
+
+Each employee may have multiple transactions.
+
+Task:
+For each EMP_ID:
+
+1. Identify the FIRST and LAST transaction based on DATE
+2. Create a variable FLAG with following logic:
+
+   * "FIRST_LAST" if employee has only one record
+   * "FIRST" for first record
+   * "LAST" for last record
+   * "MIDDLE" for all other records
+
+---
+
+Create Dataset:
+
+data emp_trans;
+input EMP_ID DATE :date9. AMOUNT;
+format DATE date9.;
+datalines;
+1 01JAN2023 500
+1 10JAN2023 600
+1 20JAN2023 700
+2 05JAN2023 300
+2 15JAN2023 400
+3 01FEB2023 800
+4 10FEB2023 900
+4 20FEB2023 950
+;
+run;
+
+---
+
+Input Table: EMP_TRANS
+
+## EMP_ID | DATE      | AMOUNT
+
+1      | 01JAN2023 | 500
+1      | 10JAN2023 | 600
+1      | 20JAN2023 | 700
+2      | 05JAN2023 | 300
+2      | 15JAN2023 | 400
+3      | 01FEB2023 | 800
+4      | 10FEB2023 | 900
+4      | 20FEB2023 | 950
+
+---
+
+Expected Output:
+
+## EMP_ID | DATE      | AMOUNT | FLAG
+
+1      | 01JAN2023 | 500    | FIRST
+1      | 10JAN2023 | 600    | MIDDLE
+1      | 20JAN2023 | 700    | LAST
+2      | 05JAN2023 | 300    | FIRST
+2      | 15JAN2023 | 400    | LAST
+3      | 01FEB2023 | 800    | FIRST_LAST
+4      | 10FEB2023 | 900    | FIRST
+4      | 20FEB2023 | 950    | LAST

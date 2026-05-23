@@ -1,0 +1,139 @@
+========================
+WHAT IS PDV
+========================
+
+PDV (Program Data Vector) is a temporary memory area created by SAS during DATA step execution.
+
+It holds:
+- All variables in the dataset
+- Automatic variables (_N_, _ERROR_)
+
+Each observation is built inside PDV before being written to output dataset.
+
+
+========================
+KEY POINT
+========================
+
+PDV = Where SAS processes ONE ROW at a time
+
+
+========================
+FLOW OF DATA STEP
+========================
+
+1. Compile Phase:
+   - SAS reads code
+   - Creates PDV structure
+   - Identifies variables
+
+2. Execution Phase:
+   - Reads one row into PDV
+   - Applies logic
+   - Writes to dataset
+   - Clears PDV (except retained variables)
+
+
+========================
+EXAMPLE
+========================
+
+data test;
+set emp;
+total = salary + bonus;
+run;
+
+Execution:
+
+Step 1: Read first row into PDV
+Step 2: Calculate TOTAL
+Step 3: Output row
+Step 4: Clear PDV
+Step 5: Repeat
+
+
+========================
+PDV CONTENT
+========================
+
+PDV contains:
+- Input variables (from SET)
+- New variables (created in DATA step)
+- Automatic variables:
+    _N_     -> iteration number
+    _ERROR_ -> error flag (0 or 1)
+
+
+========================
+IMPORTANT BEHAVIOR
+========================
+
+1. VARIABLES RESET
+- By default, PDV resets values to missing each iteration
+
+2. EXCEPTION (NOT RESET)
+- RETAIN variables
+- SUM statement variables
+- Variables read with SET (overwritten, not reset)
+
+3. ORDER MATTERS
+- Logic runs sequentially inside PDV
+
+
+========================
+RETAIN EXAMPLE
+========================
+
+data test;
+set emp;
+retain total 0;
+total = total + salary;
+run;
+
+Behavior:
+- TOTAL is NOT reset
+- Keeps accumulating values
+
+
+========================
+WITHOUT RETAIN
+========================
+
+data test;
+set emp;
+total = total + salary;
+run;
+
+Behavior:
+- TOTAL resets to missing each row
+- Result becomes missing
+
+
+========================
+INTERVIEW IMPORTANT POINTS
+========================
+
+- PDV processes one row at a time
+- Variables reset each iteration (default)
+- RETAIN changes PDV behavior
+- _N_ and _ERROR_ always present in PDV
+- Understanding PDV helps debug logic issues
+
+
+========================
+COMMON CONFUSION
+========================
+
+PDV is NOT:
+- A dataset
+- A table you can see
+
+It is:
+- Temporary memory during execution
+
+
+========================
+FINAL TAKEAWAY
+========================
+
+PDV = internal memory where SAS builds each observation before writing output

@@ -1,0 +1,82 @@
+===========================
+PROBLEM: INNER JOIN
+===========================
+
+Problem Statement:
+Find employee name, department name, and salary for employees who exist in all three tables.
+
+-----------------------------------
+INPUT DATASETS
+-----------------------------------
+
+EMPLOYEE
+| EMP_ID | EMP_NAME | DEPT_ID |
+|--------|----------|---------|
+| 101    | Amit     | D1      |
+| 102    | Neha     | D2      |
+| 103    | Raj      | D3      |
+| 104    | Simran   | D2      |
+
+DEPARTMENT
+| DEPT_ID | DEPT_NAME |
+|---------|-----------|
+| D1      | HR        |
+| D2      | IT        |
+| D4      | Finance   |
+
+SALARY
+| EMP_ID | SALARY |
+|--------|--------|
+| 101    | 50000  |
+| 102    | 60000  |
+| 104    | 55000  |
+| 105    | 70000  |
+
+-----------------------------------
+EXPECTED OUTPUT
+-----------------------------------
+
+| EMP_ID | EMP_NAME | DEPT_NAME | SALARY |
+|--------|----------|-----------|--------|
+| 101    | Amit     | HR        | 50000  |
+| 102    | Neha     | IT        | 60000  |
+| 104    | Simran   | IT        | 55000  |
+
+-----------------------------------
+SAS INPUT CODE
+-----------------------------------
+
+data employee;
+input EMP_ID EMP_NAME $ DEPT_ID $;
+datalines;
+101 Amit D1
+102 Neha D2
+103 Raj D3
+104 Simran D2
+;
+run;
+
+data department;
+input DEPT_ID $ DEPT_NAME $;
+datalines;
+D1 HR
+D2 IT
+D4 Finance
+;
+run;
+
+data salary;
+input EMP_ID SALARY;
+datalines;
+101 50000
+102 60000
+104 55000
+105 70000
+;
+run;
+
+-----------------------------------
+TASK
+-----------------------------------
+
+Write a PROC SQL query to perform INNER JOIN on all three tables.

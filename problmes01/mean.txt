@@ -1,0 +1,266 @@
+========================
+EASY LEVEL
+========================
+
+Q1: Basic Summary Statistics
+Problem:
+Generate mean, sum, min, max for salary
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B 2000
+C 3000
+;
+run;
+
+
+------------------------
+
+Q2: Mean Only
+Problem:
+Display only mean of salary
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1500
+B 2500
+C 3500
+;
+run;
+
+
+------------------------
+
+Q3: Multiple Variables
+Problem:
+Generate statistics for salary and bonus
+
+Input Dataset:
+data emp;
+input name $ salary bonus;
+datalines;
+A 1000 100
+B 2000 200
+C 3000 300
+;
+run;
+
+
+------------------------
+
+Q4: N and NMISS
+Problem:
+Display count of observations and missing values for salary
+
+Input Dataset:
+data emp;
+input name $ salary;
+datalines;
+A 1000
+B .
+C 2000
+;
+run;
+
+
+========================
+MEDIUM LEVEL
+========================
+
+Q5: Group-wise Mean
+Problem:
+Calculate mean salary by department
+
+Input Dataset:
+data emp;
+input dept $ salary;
+datalines;
+HR 1000
+HR 2000
+IT 3000
+IT 4000
+;
+run;
+
+
+------------------------
+
+Q6: Class Statement with Multiple Variables
+Problem:
+Generate mean salary and bonus by department
+
+Input Dataset:
+data emp;
+input dept $ salary bonus;
+datalines;
+HR 1000 100
+HR 2000 200
+IT 3000 300
+IT 4000 400
+;
+run;
+
+
+------------------------
+
+Q7: Output Dataset
+Problem:
+Store summary statistics into dataset OUT_MEAN
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+300
+;
+run;
+
+
+------------------------
+
+Q8: Specific Statistics
+Problem:
+Generate only SUM and MEAN for salary
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+300
+;
+run;
+
+
+========================
+ADVANCED LEVEL
+========================
+
+Q9: Multiple Class Variables
+Problem:
+Calculate mean salary by dept and gender
+
+Input Dataset:
+data emp;
+input dept $ gender $ salary;
+datalines;
+HR M 1000
+HR F 2000
+IT M 3000
+IT F 4000
+;
+run;
+
+
+------------------------
+
+Q10: NWAY Option
+Problem:
+Generate summary only for combinations of all class variables
+
+Input Dataset:
+data emp;
+input dept $ gender $ salary;
+datalines;
+HR M 1000
+HR F 2000
+IT M 3000
+IT F 4000
+;
+run;
+
+
+------------------------
+
+Q11: Output with Custom Variable Names
+Problem:
+Store mean salary in variable AVG_SAL
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+300
+;
+run;
+
+
+------------------------
+
+Q12: Filter Data in PROC MEANS
+Problem:
+Calculate mean salary only for salary > 2000
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+1000
+2500
+3000
+;
+run;
+
+
+========================
+BONUS
+========================
+
+Q13: Confidence Limits
+Problem:
+Generate mean with confidence limits
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+300
+400
+;
+run;
+
+
+------------------------
+
+Q14: Print Results Without Default Output
+Problem:
+Suppress printed output and store results in dataset
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+300
+;
+run;
+
+
+------------------------
+
+Q15: Multiple Statistics Output
+Problem:
+Create dataset with MEAN, SUM, MIN, MAX for salary
+
+Input Dataset:
+data emp;
+input salary;
+datalines;
+100
+200
+300
+;
+run;

@@ -1,0 +1,100 @@
+===========================
+PROBLEM: LEFT JOIN + CONDITION + DERIVATION
+===========================
+
+Problem Statement:
+Find all employees along with their department name and latest bonus.
+- Include ALL employees even if department or bonus is missing
+- If multiple bonus records exist, take the LATEST bonus (max BONUS_DATE)
+- Create a new column BONUS_STATUS:
+    "HIGH" if BONUS >= 5000
+    "LOW" if BONUS < 5000
+    "NO BONUS" if missing
+
+-----------------------------------
+INPUT DATASETS
+-----------------------------------
+
+EMPLOYEE
+| EMP_ID | EMP_NAME | DEPT_ID |
+|--------|----------|---------|
+| 101    | Amit     | D1      |
+| 102    | Neha     | D2      |
+| 103    | Raj      | D3      |
+| 104    | Simran   | D2      |
+| 105    | Karan    | D5      |
+
+DEPARTMENT
+| DEPT_ID | DEPT_NAME |
+|---------|-----------|
+| D1      | HR        |
+| D2      | IT        |
+| D4      | Finance   |
+
+BONUS
+| EMP_ID | BONUS | BONUS_DATE |
+|--------|-------|------------|
+| 101    | 4000  | 01JAN2023  |
+| 101    | 6000  | 01MAR2023  |
+| 102    | 3000  | 15FEB2023  |
+| 104    | 7000  | 20JAN2023  |
+| 104    | 2000  | 01APR2023  |
+| 106    | 8000  | 01JAN2023  |
+
+-----------------------------------
+EXPECTED OUTPUT
+-----------------------------------
+
+| EMP_ID | EMP_NAME | DEPT_NAME | BONUS | BONUS_STATUS |
+|--------|----------|-----------|-------|--------------|
+| 101    | Amit     | HR        | 6000  | HIGH         |
+| 102    | Neha     | IT        | 3000  | LOW          |
+| 103    | Raj      | .         | .     | NO BONUS     |
+| 104    | Simran   | IT        | 2000  | LOW          |
+| 105    | Karan    | .         | .     | NO BONUS     |
+
+-----------------------------------
+SAS INPUT CODE
+-----------------------------------
+
+data employee;
+input EMP_ID EMP_NAME $ DEPT_ID $;
+datalines;
+101 Amit D1
+102 Neha D2
+103 Raj D3
+104 Simran D2
+105 Karan D5
+;
+run;
+
+data department;
+input DEPT_ID $ DEPT_NAME $;
+datalines;
+D1 HR
+D2 IT
+D4 Finance
+;
+run;
+
+data bonus;
+input EMP_ID BONUS BONUS_DATE :date9.;
+format BONUS_DATE date9.;
+datalines;
+101 4000 01JAN2023
+101 6000 01MAR2023
+102 3000 15FEB2023
+104 7000 20JAN2023
+104 2000 01APR2023
+106 8000 01JAN2023
+;
+run;
+
+-----------------------------------
+TASK
+-----------------------------------
+
+Write a PROC SQL query to:
+1. Get latest bonus per employee
+2. LEFT JOIN with employee and department
+3. Derive BONUS_STATUS column

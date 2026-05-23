@@ -1,0 +1,60 @@
+Problem Statement:
+You are given a dataset containing employee salary history.
+Each employee may have multiple salary records over time.
+
+Task:
+For each EMP_ID:
+
+1. Compare current salary with previous salary
+2. Create a variable SAL_CHANGE:
+
+   * "INCREASE" if salary increased
+   * "DECREASE" if salary decreased
+   * "NO CHANGE" if same
+   * "FIRST" for first record of each employee
+
+---
+
+Create Dataset:
+
+data emp_sal;
+input EMP_ID DATE :date9. SALARY;
+format DATE date9.;
+datalines;
+1 01JAN2023 50000
+1 01FEB2023 52000
+1 01MAR2023 52000
+2 05JAN2023 60000
+2 05FEB2023 58000
+2 05MAR2023 62000
+3 10JAN2023 45000
+;
+run;
+
+---
+
+Input Table: EMP_SAL
+
+## EMP_ID | DATE      | SALARY
+
+1      | 01JAN2023 | 50000
+1      | 01FEB2023 | 52000
+1      | 01MAR2023 | 52000
+2      | 05JAN2023 | 60000
+2      | 05FEB2023 | 58000
+2      | 05MAR2023 | 62000
+3      | 10JAN2023 | 45000
+
+---
+
+Expected Output:
+
+## EMP_ID | DATE      | SALARY | SAL_CHANGE
+
+1      | 01JAN2023 | 50000  | FIRST
+1      | 01FEB2023 | 52000  | INCREASE
+1      | 01MAR2023 | 52000  | NO CHANGE
+2      | 05JAN2023 | 60000  | FIRST
+2      | 05FEB2023 | 58000  | DECREASE
+2      | 05MAR2023 | 62000  | INCREASE
+3      | 10JAN2023 | 45000  | FIRST

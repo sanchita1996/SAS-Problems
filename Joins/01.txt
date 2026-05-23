@@ -1,0 +1,62 @@
+Problem Statement:
+You are given two datasets: EMP and DEPT.
+
+EMP contains employee details, and DEPT contains department names.
+
+Task:
+Create a dataset that shows each employee along with their department name.
+
+---
+
+Create Dataset:
+
+data emp;
+input EMP_ID NAME $ DEPT_ID;
+datalines;
+1 Amit 10
+2 Neha 20
+3 Raj 30
+4 John 40
+;
+run;
+
+data dept;
+input DEPT_ID DEPT_NAME $;
+datalines;
+10 HR
+20 IT
+30 FIN
+;
+run;
+
+---
+
+Input Table: EMP
+
+## EMP_ID | NAME  | DEPT_ID
+
+1      | Amit  | 10
+2      | Neha  | 20
+3      | Raj   | 30
+4      | John  | 40
+
+---
+
+Input Table: DEPT
+
+## DEPT_ID | DEPT_NAME
+
+10      | HR
+20      | IT
+30      | FIN
+
+---
+
+Expected Output:
+
+## EMP_ID | NAME  | DEPT_ID | DEPT_NAME
+
+1      | Amit  | 10      | HR
+2      | Neha  | 20      | IT
+3      | Raj   | 30      | FIN
+4      | John  | 40      | .

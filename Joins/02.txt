@@ -1,0 +1,64 @@
+Problem Statement:
+You are given two datasets: SALES and PRODUCT.
+
+SALES contains transaction details, and PRODUCT contains product information.
+Some sales records may not have matching product details.
+
+Task:
+Create a dataset that shows all sales along with product name.
+If product name is missing, display it as "Not Available".
+
+---
+
+Create Dataset:
+
+data sales;
+input SALE_ID PRODUCT_ID QUANTITY;
+datalines;
+101 1 2
+102 2 1
+103 3 5
+104 5 3
+;
+run;
+
+data product;
+input PRODUCT_ID PRODUCT_NAME $;
+datalines;
+1 Laptop
+2 Mobile
+3 Tablet
+;
+run;
+
+---
+
+Input Table: SALES
+
+## SALE_ID | PRODUCT_ID | QUANTITY
+
+101     | 1          | 2
+102     | 2          | 1
+103     | 3          | 5
+104     | 5          | 3
+
+---
+
+Input Table: PRODUCT
+
+## PRODUCT_ID | PRODUCT_NAME
+
+1          | Laptop
+2          | Mobile
+3          | Tablet
+
+---
+
+Expected Output:
+
+## SALE_ID | PRODUCT_ID | QUANTITY | PRODUCT_NAME
+
+101     | 1          | 2        | Laptop
+102     | 2          | 1        | Mobile
+103     | 3          | 5        | Tablet
+104     | 5          | 3        | Not Available

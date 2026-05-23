@@ -1,0 +1,58 @@
+Problem Statement:
+You are given a dataset containing employee transactions across multiple dates.
+Each employee may have multiple records.
+
+Task:
+For each EMP_ID:
+
+1. Identify the **latest transaction (based on DATE)**
+2. Create a flag variable LATEST_FLAG:
+
+   * "Y" for latest record per employee
+   * "N" for all other records
+
+---
+
+Create Dataset:
+
+data emp_trans;
+input EMP_ID DATE :date9. AMOUNT;
+format DATE date9.;
+datalines;
+1 01JAN2023 500
+1 15FEB2023 700
+1 10MAR2023 650
+2 05JAN2023 300
+2 20JAN2023 400
+3 12FEB2023 800
+3 25FEB2023 900
+;
+run;
+
+---
+
+Input Table: EMP_TRANS
+
+## EMP_ID | DATE      | AMOUNT
+
+1      | 01JAN2023 | 500
+1      | 15FEB2023 | 700
+1      | 10MAR2023 | 650
+2      | 05JAN2023 | 300
+2      | 20JAN2023 | 400
+3      | 12FEB2023 | 800
+3      | 25FEB2023 | 900
+
+---
+
+Expected Output:
+
+## EMP_ID | DATE      | AMOUNT | LATEST_FLAG
+
+1      | 01JAN2023 | 500    | N
+1      | 15FEB2023 | 700    | N
+1      | 10MAR2023 | 650    | Y
+2      | 05JAN2023 | 300    | N
+2      | 20JAN2023 | 400    | Y
+3      | 12FEB2023 | 800    | N
+3      | 25FEB2023 | 900    | Y

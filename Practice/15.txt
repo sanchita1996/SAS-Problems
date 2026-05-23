@@ -1,0 +1,55 @@
+========================================
+SAS SQL PRACTICE (EMPLOYEES HIRED ON WEEKENDS)
+========================================
+
+PROBLEM STATEMENT:
+Find all employees hired on weekends.
+
+----------------------------------------
+INPUT DATASET (EMPLOYEE)
+----------------------------------------
+
+data employee;
+input emp_id emp_name $ hire_date :date9.;
+format hire_date date9.;
+datalines;
+1 John 01JAN2024
+2 Alice 06JAN2024
+3 Bob 07JAN2024
+4 Carol 10JAN2024
+5 David 13JAN2024
+6 Emma 14JAN2024
+7 Frank 15JAN2024
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+EMPLOYEE
+
+emp_id | emp_name | hire_date
+--------------------------------
+1      | John     | 01JAN2024
+2      | Alice    | 06JAN2024
+3      | Bob      | 07JAN2024
+4      | Carol    | 10JAN2024
+5      | David    | 13JAN2024
+6      | Emma     | 14JAN2024
+7      | Frank    | 15JAN2024
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+emp_id | emp_name | hire_date
+--------------------------------
+2      | Alice    | 06JAN2024
+3      | Bob      | 07JAN2024
+5      | David    | 13JAN2024
+6      | Emma     | 14JAN2024
+
+========================================
+END
+========================================

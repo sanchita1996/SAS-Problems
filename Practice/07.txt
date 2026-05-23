@@ -1,0 +1,50 @@
+========================================
+SAS SQL PRACTICE (DATE FILTER)
+========================================
+
+PROBLEM STATEMENT:
+Retrieve all employees who joined in the year 2022.
+
+----------------------------------------
+INPUT DATASET (CREATE TABLE)
+----------------------------------------
+
+data emp;
+input emp_id name $ dept $ hire_date :date9.;
+format hire_date date9.;
+datalines;
+101 Amit HR 01JAN2021
+102 Ravi IT 15MAR2022
+103 Neha FIN 20JUL2023
+104 John IT 10DEC2022
+105 Sara HR 05MAY2020
+106 Raj FIN 25AUG2022
+;
+run;
+
+----------------------------------------
+INPUT DATASET (VIEW)
+----------------------------------------
+
+emp_id | name | dept | hire_date
+----------------------------------------
+101    | Amit | HR   | 01JAN2021
+102    | Ravi | IT   | 15MAR2022
+103    | Neha | FIN  | 20JUL2023
+104    | John | IT   | 10DEC2022
+105    | Sara | HR   | 05MAY2020
+106    | Raj  | FIN  | 25AUG2022
+
+----------------------------------------
+REQUIRED OUTPUT
+----------------------------------------
+
+emp_id | name | dept | hire_date
+----------------------------------------
+102    | Ravi | IT   | 15MAR2022
+104    | John | IT   | 10DEC2022
+106    | Raj  | FIN  | 25AUG2022
+
+========================================
+END
+========================================
